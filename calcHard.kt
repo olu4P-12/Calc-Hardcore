@@ -11,6 +11,7 @@ fun main() {
         return
     }
 
+    // tratamento de exceções no cálculo: Evita que o programa quebre, Captura erros como: divisão por zero/expressão inválida
     try {
         val result = calcular(input)
         println("Resultado: $result")
@@ -25,6 +26,8 @@ fun calcular(expressao: String): Double {
     val operadores = Stack<Char>() // guarda operadores
 
     var i = 0
+
+     // Percorre a string/Analisa cada caractere
 
     while (i < expressao.length) {
         val c = expressao[i]
@@ -42,7 +45,7 @@ fun calcular(expressao: String): Double {
                 valores.push(numero.toDouble())
                 i-- // corrige o incremento extra
             }
-
+                     //Resolve expressões internas primeiro Ex: (2 + 3) * 4
             c == '(' -> operadores.push(c)
 
             c == ')' -> {
